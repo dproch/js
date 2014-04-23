@@ -12,7 +12,7 @@ function loadXMLDoc(dname)
   return xhttp;
 }
 
-var x=loadXMLDoc("https://raw.githubusercontent.com/aniksa/js/master/books.xml");
+var x=loadXMLDoc("books.xml");
 var xml=x.responseXML;
 path="/bookstore/book[price>35]/title";
 
