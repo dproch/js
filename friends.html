@@ -5,35 +5,26 @@
 <script src="http://knockoutjs.com/downloads/knockout-3.0.0.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
+    //person model
     function Person(data) {
     this.uid = ko.observable(data.uid);
     this.firstName = ko.observable(data.first_name);
     this.lastName = ko.observable(data.last_name);
-    //this.nickname = ko.observable(data.nickname);
-    //this.userId =  ko.observable(data.user_id);
+    
     this.imgSrc = ko.observable(data.photo_50);
     this.fullName = ko.computed(function () {
         return this.firstName() + " " + this.lastName();
     }, this);
 }
 
-function TaskListViewModel() {
-    // Data
+function FriendListViewModel() {
+    
     var self = this;
     self.friends = ko.observableArray([]);
-    /* self.newTaskText = ko.observable();
-    self.incompleteTasks = ko.computed(function() {
-        return ko.utils.arrayFilter(self.friends(), function(person) { return !person.isDone() });
-    });
-
-    // Operations
-    self.addTask = function() {
-        self.friends.push(new Task({ first_name: this.newTaskText() }));
-        self.newTaskText("");
-    };
-    self.removeTask = function(person) { self.friends.remove(person) };*/
-    // $.getJSON("https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50", function(allData) {
-    var allData = {
+    
+    //load data from vk json and map it to person model (includes sex check)
+    $.getJSON("https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50", function(allData) {
+   /* var allData = {
         "response": [{
             "uid": 718577,
             "first_name": "Вика",
@@ -59,15 +50,15 @@ function TaskListViewModel() {
             "photo_50": "http:\/\/cs100.vk.me\/u1312977\/e_37199152.jpg",
             "user_id": 1312977
         }]
-    };
-    var mappedTasks = $.map(allData.response, function (item) {
+    };*/
+    var mappedFriends = $.map(allData.response, function (item) {
         if (item.sex == 1) return new Person(item)
     });
-    self.friends(mappedTasks);
-    //   }); 
+    self.friends(mappedFriends);
+     }); 
 }
-
-ko.applyBindings(new TaskListViewModel());
+//update view with the data
+ko.applyBindings(new FriendListViewModel());
 </script>
 </head>
 <body>
