@@ -18,14 +18,11 @@
     }, this);
 }
 
-function FriendListViewModel() {
+function FriendListViewModel(var allData) {
     
     var self = this;
     self.friends = ko.observableArray([]);
-    var allData;
-    function callbackFunc(result) { 
-        allData = result; 
-    } 
+    
     //load data from vk json and map it to person model (includes sex check)
     //$.getJSON("https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50", function(allData) {
    /* var allData = {
@@ -61,8 +58,13 @@ function FriendListViewModel() {
     self.friends(mappedFriends);
   //   }); 
 }
+
+var allData;
+function callbackFunc(result) { 
+        allData = result; 
+    } 
 //update view with the data
-ko.applyBindings(new FriendListViewModel());
+ko.applyBindings(new FriendListViewModel(allData));
 </script>
 </head>
 <body>
