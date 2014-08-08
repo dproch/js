@@ -37,12 +37,9 @@ $.ajax({
     }); 
 }
 
-var allData;
-function callbackFunc(result) { 
-        allData = result; 
-    } 
+
 //update view with the data
-ko.applyBindings(new FriendListViewModel(allData));
+ko.applyBindings(new FriendListViewModel());
 </script>
 </head>
 <body>
