@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Friends</title>
+<script src="http://knockoutjs.com/downloads/knockout-3.0.0.js" type="text/javascript"></script>
+ 
+<script type="text/javascript">
+    function Person(data) {
+    this.uid = ko.observable(data.uid);
+    this.firstName = ko.observable(data.first_name);
+    this.lastName = ko.observable(data.last_name);
+    //this.nickname = ko.observable(data.nickname);
+    //this.userId =  ko.observable(data.user_id);
+    this.imgSrc = ko.observable(data.photo_50);
+    this.fullName = ko.computed(function () {
+        return this.firstName() + " " + this.lastName();
+    }, this);
+}
+
+function TaskListViewModel() {
+    // Data
+    var self = this;
+    self.friends = ko.observableArray([]);
+    /* self.newTaskText = ko.observable();
+    self.incompleteTasks = ko.computed(function() {
+        return ko.utils.arrayFilter(self.friends(), function(person) { return !person.isDone() });
+    });
+
+    // Operations
+    self.addTask = function() {
+        self.friends.push(new Task({ first_name: this.newTaskText() }));
+        self.newTaskText("");
+    };
+    self.removeTask = function(person) { self.friends.remove(person) };*/
+    // $.getJSON("https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50", function(allData) {
+    var allData = {
+        "response": [{
+            "uid": 718577,
+            "first_name": "Вика",
+            "last_name": "Гридина",
+            "sex": 1,
+            "nickname": "",
+            "photo_50": "http:\/\/cs311630.vk.me\/v311630577\/4485\/CxDEHuyxbLM.jpg",
+            "user_id": 718577
+        }, {
+            "uid": 1171442,
+            "first_name": "Надежда",
+            "last_name": "Никольская",
+            "sex": 1,
+            "nickname": "",
+            "photo_50": "http:\/\/cs618818.vk.me\/v618818442\/9414\/iuvzYlhPRpQ.jpg",
+            "user_id": 1171442
+        }, {
+            "uid": 1312977,
+            "first_name": "Виталий",
+            "last_name": "Гайдуков",
+            "sex": 2,
+            "nickname": "",
+            "photo_50": "http:\/\/cs100.vk.me\/u1312977\/e_37199152.jpg",
+            "user_id": 1312977
+        }]
+    };
+    var mappedTasks = $.map(allData.response, function (item) {
+        if (item.sex == 1) return new Person(item)
+    });
+    self.friends(mappedTasks);
+    //   }); 
+}
+
+ko.applyBindings(new TaskListViewModel());
+</script>
+</head>
+<body>
+<h3>Friends</h3>
+
+<ul data-bind="foreach: friends, visible: friends().length > 0">
+    <li>
+        <img data-bind="attr:{src: imgSrc}" /><span data-bind="text: fullName"></span>
+
+    </li>
+</ul>You have <b data-bind="text: friends().length">&nbsp;</b> female friend(s)
+<span data-bind="visible: friends().length == 0"> - no female friends</span>
+</body>
+</html>
