@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src="http://knockoutjs.com/downloads/knockout-3.0.0.js" type="text/javascript"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50&callback=callbackFunc"></script>
 <script type="text/javascript">
     //person model
     function Person(data) {
@@ -21,9 +22,12 @@ function FriendListViewModel() {
     
     var self = this;
     self.friends = ko.observableArray([]);
-    
+    var allData;
+    function callbackFunc(result) { 
+        allData = result; 
+    } 
     //load data from vk json and map it to person model (includes sex check)
-    $.getJSON("https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50", function(allData) {
+    //$.getJSON("https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50", function(allData) {
    /* var allData = {
         "response": [{
             "uid": 718577,
@@ -55,7 +59,7 @@ function FriendListViewModel() {
         if (item.sex == 1) return new Person(item)
     });
     self.friends(mappedFriends);
-     }); 
+  //   }); 
 }
 //update view with the data
 ko.applyBindings(new FriendListViewModel());
