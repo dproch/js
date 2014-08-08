@@ -23,12 +23,7 @@ function FriendListViewModel(var allData) {
     var self = this;
     self.friends = ko.observableArray([]);
     
-    var req="https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50";
-$.ajax({
-    url : req,
-    type : "GET",
-    dataType : "jsonp",
-    success : function(allData){
+    $.getJSON("https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50&callback=?", function(allData) {
 	
     var mappedFriends = $.map(allData.response, function (item) {
         if (item.sex == 1) return new Person(item)
