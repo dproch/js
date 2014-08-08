@@ -20,6 +20,7 @@
 
 
 <script type="text/javascript">
+    var user_id = "1406420"; //id of vk user for whom the friend girls will be displayed
     //person model
     function Person(data) {
     this.uid = ko.observable(data.uid);
@@ -39,7 +40,7 @@ function FriendListViewModel() {
     
    // $.getJSON("https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50&callback=?", function(
     	$.ajax({
-	url: 'https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50',
+	url: 'https://api.vk.com/method/friends.get?user_id='+user_id+'&fields=nickname,sex,photo_50',
 	dataType: "jsonp",
 	success:function(allData) {
 	
