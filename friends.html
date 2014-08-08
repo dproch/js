@@ -9,7 +9,7 @@
 </head>
 <body>
 <h3>Friends</h3>
-
+<div class="row">
 <ul data-bind="foreach: friends, visible: friends().length > 0" class="media-list">
     <li class="media">
         <img data-bind="attr:{src: imgSrc}" class="media-object" /><span data-bind="text: fullName" ></span>
@@ -17,7 +17,7 @@
     </li>
 </ul>You have <b data-bind="text: friends().length">&nbsp;</b> female friend(s)
 <span data-bind="visible: friends().length == 0"> - no female friends</span>
-
+</div>
 
 <script type="text/javascript">
     var user_id = "1406420"; //id of vk user for whom the friend girls will be displayed
