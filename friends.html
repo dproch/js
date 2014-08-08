@@ -10,9 +10,9 @@
 <body>
 <h3>Friends</h3>
 
-<ul data-bind="foreach: friends, visible: friends().length > 0">
-    <li>
-        <img data-bind="attr:{src: imgSrc}" /><span data-bind="text: fullName"></span>
+<ul data-bind="foreach: friends, visible: friends().length > 0" class="media-list">
+    <li class="media">
+        <img data-bind="attr:{src: imgSrc}" class="media-object" /><span data-bind="text: fullName" ></span>
 
     </li>
 </ul>You have <b data-bind="text: friends().length">&nbsp;</b> female friend(s)
