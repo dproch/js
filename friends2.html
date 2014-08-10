@@ -56,8 +56,11 @@ function FriendListViewModel() {
     self.changeUser = function() {
         self.userID(this.changeUserID());
         self.changeUserID("");
+        self.friends.removeAll();
+        self.initFriends();
     };    
-
+    
+    self.initFriends = function(){
     
    // $.getJSON("https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50&callback=?", function(
     	$.ajax({
@@ -71,7 +74,10 @@ function FriendListViewModel() {
     self.friends(mappedFriends);
     }
     		
-    	}); 
+               });
+    }
+    
+    initFriends();
 }
 
 
