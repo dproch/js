@@ -49,19 +49,19 @@ function FriendListViewModel() {
     var self = this;
     self.friends = ko.observableArray([]);
     
-    self.userID = ko.observable("67867");
-    self.changeUserID = ko.observable("789798");
+    self.userID = ko.observable(user_id);
+    self.changeUserID = ko.observable();
     
     // Operations
     self.changeUser = function() {
-        /*self.userID(this.changeUserID());
-        self.changeUserID("");*/
+        self.userID(this.changeUserID());
+        self.changeUserID("");
     };    
 
     
    // $.getJSON("https://api.vk.com/method/friends.get?user_id=1406419&fields=nickname,sex,photo_50&callback=?", function(
     	$.ajax({
-	url: 'https://api.vk.com/method/friends.get?user_id='+user_id+'&fields=nickname,sex,photo_50',
+	url: 'https://api.vk.com/method/friends.get?user_id='+self.userID()+'&fields=nickname,sex,photo_50',
 	dataType: "jsonp",
 	success:function(allData) {
 	
