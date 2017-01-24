@@ -1,0 +1,34 @@
+<html>
+<head><title>Triangle Test</title></head>
+<body>
+<input type="number" id="tb1"/>
+<input type="number" id="tb2"/>
+<input type="number" id="tb3"/>
+<input type="button" value="check" id="checkBtn"/>
+<div id = "result">
+
+</div>
+<script>
+
+
+var result = document.getElementById("result");
+var resultTxt = "";
+
+var btn = document.getElementById("checkBtn");
+btn.onclick = function(){
+var a = Number(document.getElementById("tb1").value);
+var b = Number(document.getElementById("tb2").value);
+var c = Number(document.getElementById("tb3").value);	
+
+if (a+b < c || a+c < b || b+c < a) resultTxt = "не треугольник";
+else if (a+b === c || a+c === b || c+b === a) resultTxt = "вырожденный";
+else {
+  	if ( a*a+b*b === c*c || b*b+c*c === a*a || a*a+c*c === b*b)	resultTxt = "прямоугольный";
+	else if ( a == b && b == c) resultTxt = "равносторонний";
+	else if ( a == b || b == c || a == c) resultTxt = "равнобедренный";
+	else resultTxt = "разносторонний";
+  }
+result.innerHTML = resultTxt;
+}
+</script>
+</body>
