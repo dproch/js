@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+ <body>
+	<div id="wrap">
+	  <form action="" id="cakeform">
+		<fieldset>
+		  <legend>Создай свой пирог</legend>
+		  <label>Размер пирога</label>
+		  <br/>
+		  <input type="radio" name="selectedcake" value="200" id = "Round15" /><label for="Round15">Круглый 15см - на 8 человек (200грн)</label>
+		  <br/>
+		  <input type="radio" name="selectedcake" value="250" id = "Round20"/><label for="Round20">Круглый 20см - на 10 человек (250грн)</label>
+		  <br/>
+		  <input type="radio" name="selectedcake" value="300" id = "Round25"/> <label for="Round25">Круглый 25см - на 12 человек (300грн)</label>
+		  <br/>
+		  <input type="radio" name="selectedcake" value="350" id = "Round30"/> <label for="Round30">Круглый 30см - на 16 человек (350грн)</label>
+		  <br/>
+		  <br/>
+		  <label>Начинка</label>
+
+		  <select id="filling" name='filling'>
+			<option value="0">Выберите начинку</option>
+			<option value="50">Лимон с сахаром (50грн)</option>
+			<option value="50">Заварной крем (50грн)</option>
+			<option value="60">Помадка (60грн)</option>
+			<option value="70">Кофе (70грн)</option>
+			<option value="80">Малина (80грн)</option>
+			<option value="70">Ананас (70грн)</option>
+			<option value="70">Вишня(70грн)</option>
+			<option value="70">Абрикос(70грн)</option>
+			<option value="60">Масляный крем(60грн)</option>
+			<option value="60">Шоколад (60грн)</option>
+		  </select>
+		  <br/>
+		  <p>
+			<label for='includecandles' class="inlinelabel">Добавить свечи (50грн)</label>
+			<input type="checkbox" id="includecandles" name='includecandles' value = "50"/>
+		  </p>
+
+		  <p>
+			<label class="inlinelabel" for='includeinscription'>Добавить надпись (100грн)</label>
+			<input type="checkbox" id="includeinscription" name="includeinscription" value = "100"/>
+
+			<input type="text" id="theinscription" name="theinscription" placeholder="Введите надпись" value=""/>
+		  </p>
+		  <div class="result"></div>
+
+		</fieldset>
+	  </form>
+	</div>
+	<script src = "script.js"></script>
+ </body>
+</html>
