@@ -24,7 +24,7 @@ const game = {
 		this.ctx = this.canvas.getContext('2d');
 		this.ctx.scale(dpr, dpr);
 	}
-}
+};
 class Figure {
 	constructor(min, max){
 		this.x = Math.round(Math.random() * (max-min) + min);
@@ -32,7 +32,7 @@ class Figure {
 		this.color = `rgb(${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)})`;
 	}
 }
-//класс Ball наследует класс Figure
+//пїЅпїЅпїЅпїЅпїЅ Ball пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ Figure
 class Ball extends Figure {
 	constructor (min = 0, max = 300) {
 		super(min, max);
@@ -56,5 +56,5 @@ class Ball extends Figure {
 	}
 }
 game.init();
-game.run();
+setInterval(()=>game.run(),10);
 document.addEventListener("click", (e)=>game.onclick(e), false);
