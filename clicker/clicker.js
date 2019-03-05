@@ -32,7 +32,7 @@ class Figure {
 		this.color = `rgb(${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)})`;
 	}
 }
-//����� Ball ��������� ����� Figure
+//класс Ball наследуется от класса Figure
 class Ball extends Figure {
 	constructor (min = 0, max = 300) {
 		super(min, max);
@@ -46,8 +46,9 @@ class Ball extends Figure {
 		ctx.closePath();
 	}
 	onclick(e){
-		if ((e.x - this.x)*(e.x - this.x)+(e.y - this.y)*(e.y - this.y)<=this.radius*this.radius)
+		if ((e.x - this.x)*(e.x - this.x)+(e.y - this.y)*(e.y - this.y)<=this.radius*this.radius){
 			console.log('clicked');
+		}
 	}
 	static createList(){
 		let list = [];
