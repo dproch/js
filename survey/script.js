@@ -60,6 +60,7 @@ const app = {
             }
 		}
 		this.show();
+        emailjs.send("gmail", "template_Aj2EGTHX", {"to_email":data["email"]});
 	},
 	show(){
 		this.view.innerHTML = '';
