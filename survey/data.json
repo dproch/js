@@ -1,5 +1,5 @@
 [
   {"question": "Question1", "name":"q1", "type": "radio", "answers": ["ответ 1", "ответ 2", "ответ 3"]},
   {"question": "Question12", "name":"q2", "type": "radio", "answers": ["ans1", "ans2", "ans3"]},
-  {"question": "Question22", "name":"q3", "type": "number", "answers": ["ans1", "ans2", "ans3"]}
+  {"question": "Question22", "name":"q3", "type": "text", "answers": ["ans1", "ans2", "ans3"]}
 ]
