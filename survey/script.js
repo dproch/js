@@ -36,6 +36,7 @@ const app = {
 	max: 4, //max number of options
 	view: document.getElementById('result'),
 	init(data){
+	    this.email = data["email"];
 	    document.body.children[0].textContent = data["title"];
         document.body.children[1].innerHTML = data["description"];
 		for (let q of data["questions"]){
@@ -60,7 +61,7 @@ const app = {
             }
 		}
 		this.show();
-        emailjs.send("gmail", "template_Aj2EGTHX", {"to_email":data["email"]});
+       // emailjs.send("gmail", "template_xxxxx", {"to_email":this.email});
 	},
 	show(){
 		this.view.innerHTML = '';
