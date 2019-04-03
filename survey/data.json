@@ -1,5 +1,9 @@
-[
-  {"question": "Question1", "name":"q1", "type": "radio", "answers": ["ответ 1", "ответ 2", "ответ 3"]},
-  {"question": "Question12", "name":"q2", "type": "radio", "answers": ["ans1", "ans2", "ans3"]},
-  {"question": "Question22", "name":"q3", "type": "text", "answers": ["ans1", "ans2", "ans3"]}
-]
+{
+  "title": "Project evaluation",
+  "description": "Please complete the questionnaire for one of your company's projects.The questionnaire consists of two parts. The first part allows you to reflect a brief summary of the project and involves answers to questions. The second part contains the questions in a closed form. The user in the Membership function column should indicate the degree of compliance of the variant with the user's project. Conformity assessment can be from 0 to 1. «1» means full compliance of the variant with the project. The most common answers are 0 or 1. But for the questions regarding   X3 , X4 ,  X5, X8 ,  X19    parameters, this may be a score between 0 and 1.",
+  "questions":[
+    {"question": "Question1", "name":"q1", "type": "radio", "answers": ["ответ 1", "ответ 2", "ответ 3"]},
+    {"question": "Question12", "name":"q2", "type": "radio", "answers": ["ans1", "ans2", "ans3"]},
+    {"question": "Question22", "name":"q3", "type": "text", "answers": ["ans1", "ans2", "ans3"]}
+  ]
+}
