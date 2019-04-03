@@ -24,7 +24,6 @@ class DataRadio{
 		let label = document.createElement('label');
 		label.textContent = str;
 		label.setAttribute('for', id);
-		//ans.setAttribute('value', 0);
         ans.setAttribute('placeholder', '[0.0 - 1.0]');
 		if (type === 'text') ans.setAttribute('pattern','[01][.,]{0,1}[0-9]{0,2}');
 		return {a: ans,l:label}; 
