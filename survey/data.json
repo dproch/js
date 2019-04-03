@@ -1,0 +1,4 @@
+[
+{"question": "Вопрос 1", "name":"test1","answers": ["ответ 1", "ответ 2", "ответ 3"]},
+{"question": "Вопрос 2", "name":"test2","answers": ["ans1", "ans2", "ans3"]},
+]
