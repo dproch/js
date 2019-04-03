@@ -5,20 +5,20 @@
 const questions = "http://aniksa.github.io/js/survey/data.json";
 class DataRadio{
 	constructor(data, form){
-		this.form = form;
+		//this.form = form;
 		this.question = document.createElement("p");
 		this.question.textContent = data["question"]; 
 		form.appendChild(this.question);
 		this.answers=[];
 		for (let i=0; i< data["answers"].length; i++){
-			this.answers.push(this.addAnswer(data["answers"][i], data["name"], i));
+			this.answers.push(DataRadio.addAnswer(data["answers"][i], data["name"], i, data["type"]));
 			form.appendChild(this.answers[i].a);
 			form.appendChild(this.answers[i].l)
 		}
 	}
-	addAnswer(str, name, i){
+	static addAnswer(str, name, i, type){
 		let ans = document.createElement('input');
-		ans.setAttribute('type', 'radio');
+		ans.setAttribute('type', type);
 		ans.setAttribute('value', i);
 		ans.setAttribute('name', name);
 		let id = name.toString() + i.toString();
@@ -59,7 +59,7 @@ const app = {
 			this.view.innerHTML += `${i+1}: ${this.score[i]}<br/>`;
 		}		
 	}
-}
+};
 
 fetch(questions).then(response=> {return response.json();})
 .then(data => {app.init(data);})
