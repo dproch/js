@@ -2,7 +2,7 @@
 {"question": "Test 1", "name":"test1","answers": ["ans1", "ans2", "ans3"]},
 {"question": "Test 1", "name":"test2","answers": ["ans1", "ans2", "ans3"]},
 ];*/
-const questions = "";
+const questions = "http://aniksa.github.io/js/survey/data.json";
 class DataRadio{
 	constructor(data, form){
 		this.form = form;
@@ -19,7 +19,7 @@ class DataRadio{
 	addAnswer(str, name, i){
 		let ans = document.createElement('input');
 		ans.setAttribute('type', 'radio');
-		ans.setAttribute('value', str);
+		ans.setAttribute('value', i);
 		ans.setAttribute('name', name);
 		let id = name.toString() + i.toString();
 		ans.id = id;
@@ -31,11 +31,36 @@ class DataRadio{
 }
 
 const app = {
-	init(){
+	form : document.forms.test,
+	score : [],
+	max: 4, //max number of options
+	view: document.getElementById('result'),
+	init(questions){
 		for (let q of questions){
-			new DataRadio(q, document.forms.test);
+			new DataRadio(q, this.form );
 		}
+		this.form.onsubmit = this.calculate.bind(this);
+	},
+	calculate(e){
+		e.preventDefault();
+		for (let i=0; i<this.max; i++)
+			this.score[i] = 0;
+		for (let inp of this.form.elements){
+			if (inp.type === "radio" && inp.checked){
+				this.score[parseInt(inp.value)]++;
+				console.log(this.score);
+			}
+		}
+		this.show();
+	},
+	show(){
+		this.view.innerHTML = '';
+		for (let i = 0; i< this.score.length; i++){
+			this.view.innerHTML += `${i+1}: ${this.score[i]}<br/>`;
+		}		
 	}
 }
 
-app.init();
+fetch(questions).then(response=> {return response.json();})
+.then(data => {app.init(data);})
+.catch(err => { console.log(err);});
