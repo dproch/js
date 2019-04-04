@@ -61,6 +61,7 @@ const app = {
             }
 		}
 		this.show();
+		this.pushToDB();
        // emailjs.send("gmail", "template_xxxxx", {"to_email":this.email});
 	},
 	show(){
@@ -68,7 +69,38 @@ const app = {
 		for (let i = 0; i< this.score.length; i++){
 			this.view.innerHTML += `${i+1}: ${this.score[i]}<br/>`;
 		}		
-	}
+	},
+    pushToDB() {
+        // Firebase ref
+        const ref = firebase.database().ref();
+            let name = this.form.elements["project-name"].value;
+            let product = this.form.elements["project-product"].value;
+            let answers = [];
+            let answersQ = [];
+            for (let inp of this.form.elements){
+                //let numAns = inp.dataset.idAnswer;//parseInt(inp.name.slice(-1,1));
+                if (inp.hasAttribute('data-id-answer')) {
+                    let inc = 0;
+                    if (inp.type === "radio")
+                        inc = (inp.checked)? 1 : 0;
+                    if (inp.type === 'text')
+                        inc = parseFloat(inp.value)||0;
+                    answersQ.push(inc);
+                    if (inp.dataset.idAnswer == (this.max-1)){
+                        answers.push(answersQ);
+                        answersQ = [];
+                    }
+                    //console.log(this.score);
+                }
+            }
+            ref.push({
+                name: name,
+                product: product,
+                answers: answers
+            });
+            //document.querySelector("#signup-form").classList.add("hidden");
+           // document.getElementById("status").innerHTML = "Дякуємо " + name + "! Чекайте на наші новини на " + email + ".";
+    }
 };
 
 fetch(questions).then(response=> {return response.json();})
