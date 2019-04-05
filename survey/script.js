@@ -9,10 +9,11 @@ class DataRadio{
 		this.answers=[];
 		for (let i=0; i< data["answers"].length; i++){
 			this.answers.push(DataRadio.addAnswer(data["answers"][i], data["name"], i, data["type"]));
-            btnSubmit.before(this.answers[i].l);
             btnSubmit.before(this.answers[i].a);
+			btnSubmit.before(this.answers[i].l);
             btnSubmit.before(document.createElement('br'));
 		}
+
 	}
 	static addAnswer(str, name, i, type){
 		let ans = document.createElement('input');

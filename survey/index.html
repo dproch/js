@@ -4,8 +4,8 @@
     <meta charset="utf-8"/>
     <title>Test</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"/>
-   <!-- <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <!--<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"/>
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
     <script type="text/javascript">
         (function(){
             emailjs.init("user_xxxx");
@@ -21,13 +21,22 @@
         };
         firebase.initializeApp(config);
     </script>
+    <style>
+        body {padding:10px 10px; margin:0 auto;font-size: calc(0.75em + 1vmin);}
+        p{font-weight:bold;}
+        input{padding: 5px; margin-right:1em; font-size: calc(0.75em + 1vmin); }
+        input[type='text']{width:4.5em;}
+        input[type='text'].project-details {width:15em;}
+        input[type='radio']{transform:scale(1.5);}
+        label{font-size: calc(0.75em + 1vmin);}
+    </style>
 </head>
-<body style="padding:10px 10px; margin:0 auto">
+<body >
     <h1></h1>
     <p></p>
     <form name="test" class="pure-form pure-form-stacked">
-        <input type="text" name="project-name" class="pure-input-1" placeholder="Project name"/>
-        <input type="text" name="project-product" class="pure-input-1" placeholder="Project product"/>
+        <input type="text" name="project-name" class="project-details" placeholder="Project name"/><br/>
+        <input type="text" name="project-product" class="project-details" placeholder="Project product"/>
         <input type="submit" name="submit" value="Get result" class="pure-button pure-button-primary"/>
     </form>
     <p><span id="result"></span></p>
