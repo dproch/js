@@ -58,7 +58,7 @@ const app = {
                 if (inp.type === 'text')
                     inc = parseFloat(inp.value)||0;
                 this.score[inp.dataset.idAnswer] += inc;
-                console.log(this.score);
+                //console.log(this.score);
             }
 		}
 		this.show();
@@ -67,8 +67,10 @@ const app = {
 	},
 	show(){
 		this.view.innerHTML = '';
+        let scoreRounded = 0;
 		for (let i = 0; i< this.score.length; i++){
-			this.view.innerHTML += `${i+1}: ${this.score[i]}<br/>`;
+            scoreRounded = +this.score[i].toFixed(3);
+			this.view.innerHTML += `${i+1}: ${scoreRounded}<br/>`;
 		}		
 	},
     pushToDB() {
