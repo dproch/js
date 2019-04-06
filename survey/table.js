@@ -15,7 +15,7 @@ const questions = "http://aniksa.github.io/js/survey/data.json";
 class QuestionAnswer{
     constructor(data, table){
         // this.question = document.createElement("p");
-        let tr = `<tr><td>${data["question"]}</td></tr>`;
+        let tr = `<tr><td class="question">${data["question"]}</td></tr>`;
         table.innerHTML+=tr;
         for (let i=0; i < data["answers"].length; i++){
             tr = `<tr><td class="ans">${data["answers"][i]}</td></tr>`;
