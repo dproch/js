@@ -32,7 +32,7 @@ class DataRadio{
 		    ans.setAttribute('min','0');
             ans.setAttribute('max','1');
             ans.setAttribute('step','0.01');
-        }
+        }else { ans.setAttribute('required','true')}
 		return {a: ans,l:label}; 
 	}
 }

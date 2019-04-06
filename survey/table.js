@@ -39,7 +39,7 @@ const app = {
                 /*table.innerHTML += `<tr><td colspan="2" class="project-name">${childData["name"]}</td></tr>`;
                 table.innerHTML += `<tr><td colspan="2" class="project-product">${childData["product"]}</td></tr>`;*/
                 let k=0;
-                table.children[0].children[0].innerHTML += `<td>${childData["name"]}<br/>${childData["product"]}</td>`
+                table.children[0].children[0].innerHTML += `<td>${childData["name"]}<br/>${childData["product"]}</td>`;
                 for (let i=0; i<childData.answers.length; i++){
                     for (let j=0; j<app.max; j++) {
                         answers[k].parentElement.innerHTML += `<td>${childData.answers[i][j]}</td>`;
