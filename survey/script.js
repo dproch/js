@@ -8,7 +8,8 @@ class DataRadio{
         btnSubmit.before(this.question);
 		this.answers=[];
 		for (let i=0; i< data["answers"].length; i++){
-			this.answers.push(DataRadio.addAnswer(data["answers"][i], data["name"], i, data["type"]));
+		    let type = data["type"] === 'text'?'number':'radio';
+			this.answers.push(DataRadio.addAnswer(data["answers"][i], data["name"], i, type));
             btnSubmit.before(this.answers[i].a);
 			btnSubmit.before(this.answers[i].l);
             btnSubmit.before(document.createElement('br'));
@@ -26,7 +27,12 @@ class DataRadio{
 		label.textContent = str;
 		label.setAttribute('for', id);
         ans.setAttribute('placeholder', '[0.0 - 1.0]');
-		if (type === 'text') ans.setAttribute('pattern','[01][.,]{0,1}[0-9]{0,2}');
+	//	if (type === 'text') ans.setAttribute('pattern','[01][.,]{0,1}[0-9]{0,2}');
+		if (type === 'number') {
+		    ans.setAttribute('min','0');
+            ans.setAttribute('max','1');
+            ans.setAttribute('step','0.01');
+        }
 		return {a: ans,l:label}; 
 	}
 }
@@ -50,12 +56,11 @@ const app = {
 		for (let i=0; i<this.max; i++)
 			this.score[i] = 0;
 		for (let inp of this.form.elements){
-			//let numAns = inp.dataset.idAnswer;//parseInt(inp.name.slice(-1,1));
 			if (inp.hasAttribute('data-id-answer')) {
                 let inc = 0;
                 if (inp.type === "radio" && inp.checked)
                     inc = 1;
-                if (inp.type === 'text')
+                if (inp.type === 'number')
                     inc = parseFloat(inp.value)||0;
                 this.score[inp.dataset.idAnswer] += inc;
                 //console.log(this.score);
@@ -63,7 +68,6 @@ const app = {
 		}
 		this.show();
 		this.pushToDB();
-       // emailjs.send("gmail", "template_xxxxx", {"to_email":this.email});
 	},
 	show(){
 		this.view.innerHTML = '';
@@ -74,7 +78,6 @@ const app = {
 		}		
 	},
     pushToDB() {
-        // Firebase ref
         const ref = firebase.database().ref();
             let name = this.form.elements["project-name"].value;
             let product = this.form.elements["project-product"].value;
@@ -86,7 +89,7 @@ const app = {
                     let inc = 0;
                     if (inp.type === "radio")
                         inc = (inp.checked)? 1 : 0;
-                    if (inp.type === 'text')
+                    if (inp.type === 'number')
                         inc = parseFloat(inp.value)||0;
                     answersQ.push(inc);
                     if (inp.dataset.idAnswer == (this.max-1)){
